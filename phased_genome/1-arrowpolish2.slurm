@@ -16,4 +16,6 @@ cd /scratch/user/edegreef/ref_genome/arrow2_phased
 module load ArrowGrid_HPRC/0.6.0-iomkl-2017b
 source activate pbbioconda
 
+#In addition to the input fasta file, need to have "input.fofn" file listing the pacbio reads bam files in the same directory.
+
 arrow.sh -w 2-00:00:00 -g P11158_101.phased.fasta -p PUMAphased
