@@ -1,4 +1,4 @@
-![Logo](https://github.com/edegreef/PUMA-reference-genome/blob/master/PUMA-ref-logo.JPG)
+![Logo](https://github.com/edegreef/PUMA-reference-genome/blob/master/PUMA-logo.JPG)
 
 # Improving draft genome assembly
 This is a repository for scripts used in polishing and scaffolding the FALCON-assembled reference genome for the Purple Martin (*Progne subis*). These scripts were executed using the Texas A&M High Preformance Research Computing resources (https://hprc.tamu.edu/).
