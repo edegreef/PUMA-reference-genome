@@ -16,4 +16,6 @@ cd /scratch/user/edegreef/ref_genome
 module load ArrowGrid_HPRC/0.6.0-iomkl-2017b
 source activate pbbioconda
 
+#In addition to the input fasta file, need to have "input.fofn" file that lists the pacbio reads bam files.
+
 arrow.sh -w 2-00:00:00 -g P11158_101.fasta -p PUMA
