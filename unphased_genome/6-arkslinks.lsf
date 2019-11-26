@@ -14,5 +14,3 @@ cd /scratch/user/edegreef/ref_genome/arkslinks;
 module load ARKS/1.0.4-foss-2018b-Python-2.7.15;
 
 arks-make arks draft=PUMA.pilon reads=barcoded
-
-
