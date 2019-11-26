@@ -8,7 +8,7 @@ Starting files:
 * PacBio reads (bam files)
 * Illumina reads (fastq files)
 
-The same pipeline was used for improving the unphased and phased genomes, with some minor differences to account for file names and memory usage. Steps 1-6 are listed here, with matching numbers in the script file names. Script files labeled with "2" at the end were used for the phased genome. 
+The same pipeline was used for improving the unphased and phased genomes, with some minor differences to account for file names and memory usage. Steps 1-6 are listed here, with matching numbers in the script file names in this repository. Script files labeled with "2" at the end were used for the phased genome. 
 
 * **Step 1:** Polishing genome with **Arrow** (https://github.com/PacificBiosciences/GenomicConsensus)
 * **Step 2:** Aligning reads to the arrow-corrected genome with **BWA**
