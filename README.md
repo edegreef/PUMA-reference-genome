@@ -16,5 +16,6 @@ The same pipeline was used for improving the unphased and phased genomes, with s
 * **Step 4:** Polishing genome with **Pilon** (https://github.com/broadinstitute/pilon/wiki)
 * **Step 5:** Creating interleaved linked reads file with **LongRanger** (https://support.10xgenomics.com/genome-exome/software/pipelines/latest/what-is-long-ranger)
 * **Step 6:** Scaffolding genome with the **ARKS+LINKS** pipline (https://github.com/bcgsc/arks/)
-* **Step 7:** Evaluating final genome stats with **QUAST**
-* **Step 8:** More assessment on final genome using **BUSCO**
+* **Step 7:** Removing duplicate scaffolds with **bbmap**
+* **Step 8:** Evaluating final genome stats with **QUAST**
+* **Step 9:** More assessment on final genome using **BUSCO**
