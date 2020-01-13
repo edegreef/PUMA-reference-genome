@@ -13,5 +13,5 @@
 cd /scratch/user/edegreef/ref_genome/arkslinks/unphased_genome;
 module load QUAST/5.0.2-intel-2018b-Python-3.6.6;
 
-quast.py -t 8 PUMA_11212019.fasta
+quast.py -t 8 PUMA_12022019.fasta
 
