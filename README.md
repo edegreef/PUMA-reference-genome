@@ -20,7 +20,7 @@ The same pipeline was used for improving the unphased and phased genomes, with s
 * **Step 8:** Evaluating final genome stats with **QUAST**
 * **Step 9:** More assessment on final genome using **BUSCO**
 
-Step 10 is in the "blast_contigs" folder, with codes for checking the reference genome (phased) for any contaminants
+Step 10 is in the "blast_contigs" folder, with codes for checking the reference genome (phased) for any contaminants. This step can be done at any stage.
 
 * **Step 10:** Checking genome for contamination using **BLAST+**
 
