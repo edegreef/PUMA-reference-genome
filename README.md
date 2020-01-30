@@ -8,7 +8,7 @@ Starting files:
 * PacBio reads (bam files)
 * Illumina reads (fastq files)
 
-The same pipeline was used for improving the unphased and phased genomes, with some minor differences to account for file names and memory usage. Steps 1-8 are listed below, with matching numbers in the script file names in the "unphased_genome" and "phased_genome" folders. Script files labeled with "2" at the end were used for the phased genome. 
+The same pipeline was used for improving the unphased and phased genomes, with some minor differences to account for file names and memory usage. Steps 1-9 are listed below, with matching numbers in the script file names in the "unphased_genome" and "phased_genome" folders. Script files labeled with "2" at the end were used for the phased genome.
 
 * **Step 1:** Polishing genome with **Arrow** (https://github.com/PacificBiosciences/GenomicConsensus)
 * **Step 2:** Aligning reads to the arrow-corrected genome with **BWA**
@@ -19,3 +19,8 @@ The same pipeline was used for improving the unphased and phased genomes, with s
 * **Step 7:** Removing duplicate scaffolds with **bbmap**
 * **Step 8:** Evaluating final genome stats with **QUAST**
 * **Step 9:** More assessment on final genome using **BUSCO**
+
+Step 10 is in the "blast_contigs" folder, with codes for checking the reference genome (phased) for any contaminants
+
+* **Step 10:** Checking genome for contamination using **BLAST+**
+
