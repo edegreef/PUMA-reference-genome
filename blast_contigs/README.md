@@ -6,4 +6,4 @@ Finally, the end of this step is making two directories for the outputs coming i
 
 **Step 2: blastcontigs.lsf:** This is the job file for blasting one list/part with the NCBI nucleotide database. Edit line 26 for each list.
 
-**Step 3: besthits:** After all blast runs are completed, this merges the best_hits outputs into one file, with select columns. Then, search for any prokaryota in the blast hits.
+**Step 3: besthits:** After all blast runs are completed, this step merges the best_hits outputs into one file, with select columns. Then, search for any non-eukaryota in the blast hits.
