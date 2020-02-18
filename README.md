@@ -1,9 +1,9 @@
 ![Logo](https://github.com/edegreef/PUMA-reference-genome/blob/master/PUMA-logo.JPG)
 
-# Improving draft genome assembly
-This is a repository for scripts used in polishing and scaffolding the FALCON-assembled reference genome for the Purple Martin (*Progne subis*). These scripts were executed using the Texas A&M High Preformance Research Computing resources (https://hprc.tamu.edu/).
+This is a repository for scripts I used in improving and annotating the Purple Martin (*Progne subis*) draft genome assembly. These scripts were executed using the Texas A&M High Preformance Research Computing resources (https://hprc.tamu.edu/).
 
-Starting files:
+# Improving draft genome assembly
+These steps are for polishing and scaffolding a FALCON-assembled reference genome. Starting files:
 * Assembled reference genome (fasta files)
 * PacBio reads (bam files)
 * Illumina reads (fastq files)
@@ -21,3 +21,16 @@ The same pipeline was used for improving the unphased and phased genomes, with s
 * **Step 9:** More assessment on final genome using **BUSCO**
 
 The "blast_contigs" folder contains codes for checking the reference genome (the phased one in this example) for any contaminants using **BLAST+**. This step can be done before or after polishing & scaffolding, but ideally before finalizing the genome and getting final quality assessments.
+
+# Genome annotation
+These steps are for annotating the reference genome using **MAKER**. Usually people include mRNA data from model organisms, but since I did not have any RNA data for my project, I only used protein evidence. Starting files:
+* Reference genome (fasta file)
+* Protein info from model species: chicken, flycatcher, zebra finch (fasta files, obtained from ensembl.org)
+* maker control files (ctl files, obtained from maker dataset files- editing the maker_opts.ctl file for each round)
+
+Steps 1-# are listed below, with matching numbers in script files names in the "annotation" folder.
+
+* **Step 1:** Preparing reference genome files for MAKER, splitting into multiple chunks and shortening sequence header names.
+* **Step 2:** First round of MAKER, using **RepeatMasker** and **EXONERATE**. [editing, still coming]
+* **Step 3:** Second round of MAKER, training **SNAP** [in progress]
+
