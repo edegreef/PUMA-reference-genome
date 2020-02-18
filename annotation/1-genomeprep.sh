@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #Splitting genome into 10 chunks before running MAKER (to run multiple jobs at once to spee up the process)
-
 module load MAKER/2.31.10-intel-2017A-Python-2.7.12
 fasta_tool -chunks 10 PUMAphased_12042019.fasta
 
