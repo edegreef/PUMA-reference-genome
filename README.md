@@ -30,7 +30,7 @@ These steps are for annotating the reference genome using **MAKER**. Usually peo
 
 Steps 1-# are listed below, with matching numbers in script files names in the "annotation" folder.
 
-* **Step 1:** Preparing reference genome files for MAKER, splitting into multiple chunks and shortening sequence header names.
+* **Step 1:** Prepping reference genome files before running MAKER
 * **Step 2:** First round of MAKER, using **RepeatMasker** and **EXONERATE**. [editing, still coming]
 * **Step 3:** Second round of MAKER, training **SNAP** [in progress]
 
