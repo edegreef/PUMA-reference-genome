@@ -8,7 +8,7 @@ These steps are for polishing and scaffolding a FALCON-assembled reference genom
 * PacBio reads (bam files)
 * Illumina reads (fastq files)
 
-The same pipeline was used for improving the unphased and phased genomes, with some minor differences to account for file names and memory usage. Steps 1-9 are listed below, with matching numbers in the script file names in the "unphased_genome" and "phased_genome" folders. Script files labeled with "2" at the end were used for the phased genome.
+Steps 1-10 are listed below, with matching numbers in the script file names in the "assembly" folder.
 
 * **Step 1:** Polishing genome with **Arrow** (https://github.com/PacificBiosciences/GenomicConsensus)
 * **Step 2:** Aligning reads to the arrow-corrected genome with **BWA**
@@ -17,20 +17,29 @@ The same pipeline was used for improving the unphased and phased genomes, with s
 * **Step 5:** Creating interleaved linked reads file with **LongRanger** (https://support.10xgenomics.com/genome-exome/software/pipelines/latest/what-is-long-ranger)
 * **Step 6:** Scaffolding genome with the **ARKS+LINKS** pipline (https://github.com/bcgsc/arks/)
 * **Step 7:** Removing duplicate scaffolds with **bbmap**
-* **Step 8:** Evaluating final genome stats with **QUAST**
-* **Step 9:** More assessment on final genome using **BUSCO**
+* **Step 8:** Contamination identification with **BLAST++**
+* **Step 9:** Evaluating final genome stats with **QUAST**
+* **Step 10:** More assessment on final genome using **BUSCO**
 
-The "blast_contigs" folder contains codes for checking the reference genome (the phased one in this example) for any contaminants using **BLAST+**. This step can be done before or after polishing & scaffolding, but ideally before finalizing the genome and getting final quality assessments.
 
 # Genome annotation
-These steps are for annotating the reference genome using **MAKER**. Usually people include mRNA data from model organisms, but since I did not have any RNA data for my project, I only used protein evidence. Starting files:
+These steps are for annotating the reference genome using **MAKER**. Usually people include mRNA data from model organisms, but since I did not have any RNA data for my project, I only used protein evidence. 
+
+Starting files for steps 1-5:
 * Reference genome (fasta file)
 * Protein info from model species: chicken, flycatcher, zebra finch (fasta files, obtained from ensembl.org)
 * maker control files (ctl files, obtained from maker dataset files- editing the maker_opts.ctl file for each round)
+
+Starting files for steps 6-#:
+* gff file only?? from the maker rounds
+* uniprot trEMBL data for the model species: chicken, flycatcher, zebra finch (___)
 
 Steps 1-# are listed below, with matching numbers in script files names in the "annotation" folder.
 
 * **Step 1:** Prepping reference genome files before running MAKER
 * **Step 2:** First round of MAKER, using **RepeatMasker** and **EXONERATE**. [editing, still coming]
 * **Step 3:** Second round of MAKER, training **SNAP** [in progress]
+* **Step 4:** Third round of MAKER, training **SNAP**, + adding in **AUGUSTUS**
+* **Step 5:** Fourth round of MAKER, training **SNAP** for the final time + checking stats??
+* **Step 6:** Identifying proteins using **BLASTP**
 
