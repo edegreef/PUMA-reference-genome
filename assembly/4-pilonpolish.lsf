@@ -1,0 +1,16 @@
+#BSUB -L /bin/bash              
+#BSUB -J pilonpolish
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -n 20
+#BSUB -R "span[ptile=20]" 
+#BSUB -R "rusage[mem=12300]"
+#BSUB -M 12300
+#BSUB -R "select[mem256gb]"
+#BSUB -W 48:00
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/ref_genome
+module load Pilon/1.23-Java-11
+java -Xmx220G -jar $EBROOTPILON/pilon.jar --genome PUMA2.arrow.fasta --frags illumalign_arrow_sorted.bam --output PUMA2.arrow.pilon --threads 8
