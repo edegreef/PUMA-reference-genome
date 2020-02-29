@@ -1,0 +1,21 @@
+#BSUB -L /bin/bash              
+#BSUB -J sortbam
+#BSUB -n 8
+#BSUB -R "span[ptile=8]" 
+#BSUB -R "rusage[mem=5000]"
+#BSUB -M 5000
+#BSUB -W 24:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/ref_genome
+module load SAMtools/1.9-intel-2018b
+
+#Sort and index bam file
+samtools sort -@ 8 -m 4G -o illumalign_arrow_sorted.bam illumalign_arrow.bam
+samtools index illumalign_arrow_sorted.bam
+
+#Look at output of samtools stats to determine which option to use for reading bam files in Pilon
+samtools stats illumalign_arrow_sorted.bam
