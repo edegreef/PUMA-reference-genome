@@ -1,0 +1,17 @@
+#BSUB -L /bin/bash              
+#BSUB -J bbmap
+#BSUB -n 8
+#BSUB -R "span[ptile=8]" 
+#BSUB -R "rusage[mem=2000]"
+#BSUB -M 2000
+#BSUB -W 01:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+
+cd /scratch/user/edegreef/ref_genome
+
+module load BBMap/38.44-Java-1.8.0
+dedupe.sh in=PUMA2.arrow.pilon.arks.fasta out=PUMA2.arrow.pilon.arks.dup.fasta outd=duplicates.fasta
