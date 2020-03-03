@@ -8,7 +8,7 @@ Starting input files (_with my file sizes as example_)
 * PacBio reads (_5 bam files totalling 83GB_)
 * Illumina reads (_3 fastq files totalling 75GB_)
 
-The main steps in this assembly improvement are polishing the genome with **Arrow** and **Pilon**, and scaffolding it with **ARKS+LINKS**. There are some intermediate steps in between these programs to create necessary input files. In addition, I also checked for duplicate scaffolds, contaminants, and assessed genome quality. All steps are listed below (approximate run time in parentheses) with matching numbers to the script file names in the **assembly** folder.
+The main steps in this assembly improvement are polishing the genome with **Arrow** and **Pilon**, and scaffolding it with **ARKS+LINKS**. There are some intermediate steps in between these programs to create necessary input files. In addition, I also checked for duplicate scaffolds, contaminants, and assessed genome quality. All steps are listed below (approximate run time in parentheses) with matching numbers to the script file names in the **assembly** folder. [:file_folder:](https://github.com/edegreef/PUMA-reference-genome/tree/master/assembly)
 
 1. Polish genome using [Arrow](https://github.com/PacificBiosciences/GenomicConsensus), with PacBio subreads.bam files listed in `input.fofn` file (_run time 2 days_)
 2. Align illumina reads to the arrow-corrected genome using [BWA](http://bio-bwa.sourceforge.net/bwa.shtml) (_run time 1.5 days_)
