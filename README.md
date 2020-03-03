@@ -3,10 +3,10 @@
 This is a repository for scripts I used in improving and annotating the Purple Martin (*Progne subis*) draft genome assembly. These scripts were executed using the Texas A&M High Preformance Research Computing resources (https://hprc.tamu.edu/).
 
 # Improving draft genome assembly
-These steps are for polishing and scaffolding a FALCON-assembled reference genome. Starting files:
-    * Assembled reference genome (fasta file)
-    * PacBio reads (bam files)
-    * Illumina reads (fastq files)
+These steps are for polishing and scaffolding a FALCON-assembled reference genome. Starting files:  
+* Assembled reference genome (fasta file)
+* PacBio reads (bam files)
+* Illumina reads (fastq files)
 
 Steps 1-11 are listed below, with matching numbers in the script file names in the "assembly" folder.
 
