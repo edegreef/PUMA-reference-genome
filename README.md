@@ -3,7 +3,7 @@
 This is a repository for scripts I used in improving and annotating the Purple Martin (*Progne subis*) draft genome assembly. These scripts were executed using the Texas A&M High Preformance Research Computing resources (https://hprc.tamu.edu/).
 
 # Improving draft genome assembly
-Starting files (_with my file sizes as example_)
+Starting input files (_with my file sizes as example_)
 * Assembled reference genome (_1 fasta file 1.16GB_) 
 * PacBio reads (_5 bam files totalling 83GB_)
 * Illumina reads (_3 fastq files totalling 75GB_)
