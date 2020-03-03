@@ -3,24 +3,27 @@
 This is a repository for scripts I used in improving and annotating the Purple Martin (*Progne subis*) draft genome assembly. These scripts were executed using the Texas A&M High Preformance Research Computing resources (https://hprc.tamu.edu/).
 
 # Improving draft genome assembly
-These steps are for polishing and scaffolding a FALCON-assembled reference genome. Starting files:  
-<p><br/></p>* Assembled reference genome (fasta file)
-<p><br/></p>* PacBio reads (bam files)
-<p><br/></p>* Illumina reads (fastq files)
+These steps are for polishing and scaffolding a 1.16 Gb reference genome. Starting input files:  
+* Assembled reference genome (fasta file)
+* PacBio reads (bam files)
+* Illumina reads (fastq files)
 
-Steps 1-11 are listed below, with matching numbers in the script file names in the "assembly" folder.
+Steps 1-11 are listed below, with matching numbers in the script file names in the **assembly** folder.
 
-**Step 1:** Polishing genome with **Arrow** (https://github.com/PacificBiosciences/GenomicConsensus)  
-**Step 2:** Aligning reads to the arrow-corrected genome with **BWA** (http://bio-bwa.sourceforge.net/bwa.shtml)
-**Step 3:** Sorting, indexing, and looking at stats of aligned bam file with **Samtools**  
-**Step 4:** Polishing genome with **Pilon** (https://github.com/broadinstitute/pilon/wiki)  
-**Step 5:** Creating interleaved linked reads file with **LongRanger** (https://support.10xgenomics.com/genome-exome/software/pipelines/latest/what-is-long-ranger)  
-**Step 6:** Scaffolding genome with the **ARKS+LINKS** pipline (https://github.com/bcgsc/arks/)  
-**Step 7:** Removing duplicate scaffolds with **bbmap** (https://jgi.doe.gov/data-and-tools/bbtools/bb-tools-user-guide/dedupe-guide/)
-**Step 8:** Contamination identification with **BLAST++**  
-**Step 9:** Evaluating final genome stats with **QUAST**  
-**Step 10:** More assessment on final genome using **BUSCO**  
-..*
+1. Polishing genome with [Arrow](https://github.com/PacificBiosciences/GenomicConsensus)  
+2. Aligning reads to the arrow-corrected genome with [BWA](http://bio-bwa.sourceforge.net/bwa.shtml)  
+3. Sorting, indexing, and looking at stats of aligned bam file with [Samtools](http://www.htslib.org/doc/samtools.html)  
+4. Polishing genome with [Pilon](https://github.com/broadinstitute/pilon/wiki)  
+5. Creating interleaved linked reads file with [LongRanger](https://support.10xgenomics.com/genome-exome/software/pipelines/latest/what-is-long-ranger)  
+6. Scaffolding genome with the [ARKS+LINKS pipline](https://github.com/bcgsc/arks/)  
+7. Identifying and removing duplicate scaffolds with [bbmap](https://jgi.doe.gov/data-and-tools/bbtools/bb-tools-user-guide/dedupe-guide/)  
+8. Shortening scaffold header names and calculating scaffold lengths with `sed`, `cat`, & `awk`
+9. Evaluating genome metrics with [QUAST](http://quast.sourceforge.net/docs/manual.html)  
+10. Assessing genome assembly completeness with [BUSCO](https://busco.ezlab.org/busco_userguide.html#running-busco)  
+11. Full genome scan for any contaminants 
+  1. Downloading taxonomy database from NCBI, splitting reference genome file into chunks, and making lists ready for BLAST step
+  2. Using [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) for each list of scaffolds, using script largely based of [kdelmore's](https://github.com/kdelmore/)
+  3. Checking for non-eukaryota using `grep`
 
 
 # Genome annotation
