@@ -12,7 +12,7 @@ The main steps in this assembly improvement are polishing the genome with **Arro
 
 1. Polish genome using [Arrow](https://github.com/PacificBiosciences/GenomicConsensus), with PacBio subreads.bam files listed in `input.fofn` file (_run time 2 days_)
 2. Align illumina reads to the arrow-corrected genome using [BWA](http://bio-bwa.sourceforge.net/bwa.shtml) (_run time 1.5 days_)
-3. Sort, index, and look at stats of aligned bam file with [Samtools](http://www.htslib.org/doc/samtools.html) (_run time 2.5 hrs_)
+3. Sort, index, and look at stats of aligned bam file with [samtools](http://www.htslib.org/doc/samtools.html) (_run time 2.5 hrs_)
 4. Polish genome using [Pilon](https://github.com/broadinstitute/pilon/wiki) (_run time 12 hrs_)
 5. Create interleaved linked reads file from illumina reads using [LongRanger](https://support.10xgenomics.com/genome-exome/software/pipelines/latest/what-is-long-ranger) (_run time ~2 days_)
 6. Scaffold genome using the [ARKS+LINKS pipline](https://github.com/bcgsc/arks/) (_run time 13 hrs_)
@@ -26,4 +26,8 @@ The main steps in this assembly improvement are polishing the genome with **Arro
      3. Check outputs for non-eukaryota using `grep`
 
 
-# Genome annotation
+# Genome annotation [in progress]
+This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/maker.html)**, running multiple rounds and using programs such as repeatmasker, exonerate, snap, and augustus. All steps are listed below (approximate run time in parentheses) with matching numbers to the script file names in the **annotation** folder. [:file_folder:](https://github.com/edegreef/PUMA-reference-genome/tree/master/annotation) Starting input file is the genome fasta (_my genome is 1.14 GB_).
+
+1. Prepare input files for running the first round of MAKER, including optionally splitting genome file into multiple chunks (to save time), downloading model data from [ensembl](http://ensembl.org/), and preparing maker_opts.ctl file (_run time a few minutes_)
+
