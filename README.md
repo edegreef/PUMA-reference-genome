@@ -23,7 +23,7 @@ The main steps in this assembly improvement are polishing the genome with **Arro
 11. Scan full genome for any contaminants (_step ii. run time ~6-7 days, with full genome split over 5 jobs_)
      1. Download taxonomy database from NCBI, splitting reference genome file into chunks, and making lists ready for BLAST step
      2. Use [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) for each list of scaffolds, using script largely based from [kdelmore](https://github.com/kdelmore/)
-     3. Check for non-eukaryota using `grep`
+     3. Check outputs for non-eukaryota using `grep`
 
 
 # Genome annotation
