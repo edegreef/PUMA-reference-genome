@@ -14,7 +14,7 @@ cd /scratch/user/edegreef/ref_genome/contaminants
 
 module load BLAST+/2.9.0-iimpi-2019a
 
-export BLASTDB=$BLASTDB:/scratch/user/edegreef/ref_genome/ncbi/
+export BLASTDB=$BLASTDB:/scratch/user/edegreef/ref_genome/contaminants/ncbi/
 
 while read prefix
 do
