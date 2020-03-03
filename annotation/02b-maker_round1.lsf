@@ -1,0 +1,27 @@
+#BSUB -L /bin/bash              
+#BSUB -J maker0
+#BSUB -n 20
+#BSUB -R "span[ptile=20]" 
+#BSUB -R "rusage[mem=2700]"
+#BSUB -M 2700
+#BSUB -W 72:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/ref_genome/annotation
+module load MAKER/2.31.10-intel-2017A-Python-2.7.12
+
+mydir=/scratch/user/edegreef/ref_genome/annotation
+cp maker*.ctl $TMPDIR
+
+cd $TMPDIR
+maker -g /scratch/user/edegreef/ref_genome/finalgenome_chunks/PUMA2_03022020_0.fasta maker_opts.ctl maker_bopts.ctl maker_exe.ctl -cpus 20
+
+fasta_merge -d PUMA2_03022020_0.maker.output/PUMA2_03022020_0_master_datastore_index.log
+gff3_merge -d PUMA2_03022020_0.maker.output/PUMA2_03022020_0_master_datastore_index.log
+
+cp PUMA2_03022020_0.maker.output/PUMA2_03022020_0_master_datastore_index.log $mydir
+cp *.all.maker.*.fasta $mydir 
+cp *.all.gff $mydir
