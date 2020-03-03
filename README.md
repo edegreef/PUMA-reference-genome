@@ -1,14 +1,14 @@
 ![Logo](https://github.com/edegreef/PUMA-reference-genome/blob/master/PUMA-logo.JPG)
 
-This is a repository for scripts I used in improving and annotating the Purple Martin (*Progne subis*) draft genome assembly. These scripts were executed using the Texas A&M High Preformance Research Computing resources (https://hprc.tamu.edu/).
+This is a repository for scripts I used in improving and annotating the Purple Martin (*Progne subis*) draft genome assembly (~1.1GB). These scripts were executed using the Texas A&M High Preformance Research Computing resources (https://hprc.tamu.edu/).
 
 # Improving draft genome assembly
-These steps are for polishing and scaffolding a 1.16 Gb reference genome. Starting input files:  
+Starting files:
 * Assembled reference genome (fasta file)
 * PacBio reads (bam files)
 * Illumina reads (fastq files)
 
-Steps 1-11 are listed below, with matching numbers in the script file names in the **assembly** folder.
+The main steps are polishing the genome with **Arrow** and **Pilon**, and scaffolding it with **ARKS+LINKS**. There are some intermediate steps in between these programs to create necessary input files. In addition, I also checked for duplicates, contaminants, and assessed genome quality. The whole process is in steps 1-11 (listed below) with matching numbers in the script file names in the **assembly** folder.
 
 1. Polish genome with [Arrow](https://github.com/PacificBiosciences/GenomicConsensus)
 2. Align reads to the arrow-corrected genome with [BWA](http://bio-bwa.sourceforge.net/bwa.shtml)
@@ -21,9 +21,9 @@ Steps 1-11 are listed below, with matching numbers in the script file names in t
 9. Evaluate genome metrics with [QUAST](http://quast.sourceforge.net/docs/manual.html)
 10. Assess genome assembly completeness with [BUSCO](https://busco.ezlab.org/busco_userguide.html#running-busco)
 11. Scan full genome for any contaminants
-  - Download taxonomy database from NCBI, splitting reference genome file into chunks, and making lists ready for BLAST step
-  - Use [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) for each list of scaffolds, using script largely based from [kdelmore](https://github.com/kdelmore/)
-  - Check for non-eukaryota using `grep`
+     1. Download taxonomy database from NCBI, splitting reference genome file into chunks, and making lists ready for BLAST step
+     2. Use [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) for each list of scaffolds, using script largely based from [kdelmore](https://github.com/kdelmore/)
+     3. Check for non-eukaryota using `grep`
 
 
 # Genome annotation
