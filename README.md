@@ -4,22 +4,23 @@ This is a repository for scripts I used in improving and annotating the Purple M
 
 # Improving draft genome assembly
 These steps are for polishing and scaffolding a FALCON-assembled reference genome. Starting files:
-* Assembled reference genome (fasta files)
-* PacBio reads (bam files)
-* Illumina reads (fastq files)
+    * Assembled reference genome (fasta file)
+    * PacBio reads (bam files)
+    * Illumina reads (fastq files)
 
-Steps 1-10 are listed below, with matching numbers in the script file names in the "assembly" folder.
+Steps 1-11 are listed below, with matching numbers in the script file names in the "assembly" folder.
 
 **Step 1:** Polishing genome with **Arrow** (https://github.com/PacificBiosciences/GenomicConsensus)  
-**Step 2:** Aligning reads to the arrow-corrected genome with **BWA**  
+**Step 2:** Aligning reads to the arrow-corrected genome with **BWA** (http://bio-bwa.sourceforge.net/bwa.shtml)
 **Step 3:** Sorting, indexing, and looking at stats of aligned bam file with **Samtools**  
 **Step 4:** Polishing genome with **Pilon** (https://github.com/broadinstitute/pilon/wiki)  
 **Step 5:** Creating interleaved linked reads file with **LongRanger** (https://support.10xgenomics.com/genome-exome/software/pipelines/latest/what-is-long-ranger)  
 **Step 6:** Scaffolding genome with the **ARKS+LINKS** pipline (https://github.com/bcgsc/arks/)  
-**Step 7:** Removing duplicate scaffolds with **bbmap**  
+**Step 7:** Removing duplicate scaffolds with **bbmap** (https://jgi.doe.gov/data-and-tools/bbtools/bb-tools-user-guide/dedupe-guide/)
 **Step 8:** Contamination identification with **BLAST++**  
 **Step 9:** Evaluating final genome stats with **QUAST**  
 **Step 10:** More assessment on final genome using **BUSCO**  
+..*
 
 
 # Genome annotation
