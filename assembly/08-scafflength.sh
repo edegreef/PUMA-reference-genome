@@ -1,5 +1,4 @@
 #These are notes for quick steps on command line, including calculating length of each scaffold
-
 #no duplicate scaffolds found in previous step, so I am continuing to use the PUMA2.arrow.pilon.arks.fasta file
 
 #shortening scaffold header names to just "scaffold#"
