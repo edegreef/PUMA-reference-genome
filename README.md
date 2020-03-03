@@ -4,9 +4,9 @@ This is a repository for scripts I used in improving and annotating the Purple M
 
 # Improving draft genome assembly
 These steps are for polishing and scaffolding a FALCON-assembled reference genome. Starting files:  
-* Assembled reference genome (fasta file)
-* PacBio reads (bam files)
-* Illumina reads (fastq files)
+<p><br/></p>* Assembled reference genome (fasta file)
+<p><br/></p>* PacBio reads (bam files)
+<p><br/></p>* Illumina reads (fastq files)
 
 Steps 1-11 are listed below, with matching numbers in the script file names in the "assembly" folder.
 
