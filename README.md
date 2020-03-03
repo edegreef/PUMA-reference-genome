@@ -21,9 +21,9 @@ Steps 1-11 are listed below, with matching numbers in the script file names in t
 9. Evaluate genome metrics with [QUAST](http://quast.sourceforge.net/docs/manual.html)  
 10. Assess genome assembly completeness with [BUSCO](https://busco.ezlab.org/busco_userguide.html#running-busco)  
 11. Scan full genome for any contaminants  
-  1. Download taxonomy database from NCBI, splitting reference genome file into chunks, and making lists ready for BLAST step  
-  2. Use [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) for each list of scaffolds, using script largely based from [kdelmore](https://github.com/kdelmore/)  
-  3. Check for non-eukaryota using `grep`  
+  - Download taxonomy database from NCBI, splitting reference genome file into chunks, and making lists ready for BLAST step  
+  -Use [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) for each list of scaffolds, using script largely based from [kdelmore](https://github.com/kdelmore/)  
+  - Check for non-eukaryota using `grep`  
 
 
 # Genome annotation
