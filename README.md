@@ -8,7 +8,7 @@ Starting files:
 * PacBio reads (bam files)
 * Illumina reads (fastq files)
 
-The main steps are polishing the genome with **Arrow** and **Pilon**, and scaffolding it with **ARKS+LINKS**. There are some intermediate steps in between these programs to create necessary input files. In addition, I also checked for duplicates, contaminants, and assessed genome quality. The whole process is in steps 1-11 (listed below) with matching numbers in the script file names in the **assembly** folder.
+The main steps are polishing the genome with **Arrow** and **Pilon**, and scaffolding it with **ARKS+LINKS**. There are some intermediate steps in between these programs to create necessary input files. In addition, I also checked for duplicate scaffolds, contaminants, and assessed genome quality. The whole process is in steps 1-11 (listed below) with matching numbers in the script file names in the **assembly** folder.
 
 1. Polish genome with [Arrow](https://github.com/PacificBiosciences/GenomicConsensus)
 2. Align reads to the arrow-corrected genome with [BWA](http://bio-bwa.sourceforge.net/bwa.shtml)
