@@ -27,7 +27,10 @@ The main steps in this assembly improvement are polishing the genome with **Arro
 
 
 # Genome annotation [in progress]
-This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/maker.html)**, running multiple rounds and using programs such as repeatmasker, exonerate, snap, and augustus. All steps are listed below (approximate run time in parentheses) with matching numbers to the script file names in the **annotation** folder. [:file_folder:](https://github.com/edegreef/PUMA-reference-genome/tree/master/annotation) Starting input file is the genome fasta (_my genome is 1.14 GB_).
+This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/maker.html)**, running multiple rounds and using programs such as repeatmasker, exonerate, snap, and augustus. All steps are listed below (approximate run time in parentheses) with matching numbers to the script file names in the **annotation** folder. [:file_folder:](https://github.com/edegreef/PUMA-reference-genome/tree/master/annotation) Starting input file is the genome fasta.
 
-1. Prepare input files for running the first round of MAKER, including optionally splitting genome file into multiple chunks (to save time), downloading model data from [ensembl](http://ensembl.org/), and preparing maker_opts.ctl file (_run time a few minutes_)
+1. Prepare input files for running the first round of MAKER, including optionally splitting genome file into multiple chunks (to save time), downloading model data from [ensembl](http://ensembl.org/), and obtaining maker control files
+2. First round of MAKER (_run time ~2 days - with 5 genome chunks running simultaneously (total 1.14GB)_)
+     1. Corresponding maker_opts.ctl file with adjusted parameters (running RepeatMasker with aves option, Exonerate to build model based on protein evidence, and other parameter changes such as min contig length, #cpus)
+     2. Job script file largely based off from [TAMU's GCATemplates](https://github.tamu.edu/), creating a temporary directory for the large number of files MAKER will create. I ran 5 of these scripts, adjusted for each genome chunk (that I created in Step1)
 
