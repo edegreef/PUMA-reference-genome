@@ -31,11 +31,11 @@ This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/mak
 
 1. Prepare input files for running the first round of MAKER, including optionally splitting genome file into multiple chunks (to save time), downloading model data from [ensembl](http://ensembl.org/), and obtaining maker control files
 2. First round of MAKER
-     1. Prepare maker_opts.ctl file with adjusted parameters to run **RepeatMasker** with aves option, and **Exonerate** to build model based on protein evidence, and a few other parameters (protein=_protein fasta files_, model_org=aves, protein2genome=1, cpus=20, min_contig=5000)
+     1. Prepare `maker_opts.ctl` file with adjusted parameters to run **RepeatMasker** and **Exonerate**, and a few other parameter changes (protein=_protein fasta files_, model_org=aves, protein2genome=1, cpus=20, min_contig=5000). I added the "02-" in the file name to organize opts file for this step since we will be editing and using this file again later. Should remove the "02-" in the name when running maker.
      2. Run `maker_run.lsf`. This script is largely based off from [TAMU's GCATemplates](https://github.tamu.edu/), creating a temporary directory for the large number of files MAKER will create. I ran 5 of these scripts (maker0.lsf, maker1.lsf, maker2.lsf....), adjusted for each genome chunk that I created in Step 1 so I can still use the same maker_opts.ctl file for each job. (_run time ~2 days - with 5 genome chunks running simultaneously (total 1.14GB)_)
 3. Create HMM model using .gff files from maker's outputs (_run time ~10 min_)
 4. Second round of MAKER
-     1. Prepare maker_opts.ctl file with updated parameters to **train SNAP** (maker_gff=_merged gff file from round1 output_, protein_pass=1, rm_pass=1, snaphmm=_hmm file created in step 3_, protein=#remove, model_org=#remove, repeat_protein=#remove, protein2genome=0, pred_stats=1)
+     1. Prepare `maker_opts.ctl` file with updated parameters to **train SNAP** (maker_gff=_merged gff file from round1 output_, protein_pass=1, rm_pass=1, snaphmm=_hmm file created in step 3_, protein=#remove, model_org=#remove, repeat_protein=#remove, protein2genome=0, pred_stats=1).
      2. Run same job script file used in first round of maker: `maker_run.lsf` (again, using 5 of these to run each chunk simultaneously)
 5. Create 2nd HMM model using .gff files from 2nd round of maker, used to re-train SNAP
 6. Third round of MAKER
