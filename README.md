@@ -35,18 +35,18 @@ This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/mak
      2. Run `maker_run.lsf`. This script is largely based off from [TAMU's GCATemplates](https://github.tamu.edu/), creating a temporary directory for the large number of files MAKER will create. **I ran 5 of these scripts (maker_run0.lsf, maker_run1.lsf, maker_run2.lsf....), adjusted for each genome chunk created in Step 1** so I can still use the same maker_opts.ctl file for each job. (_run time ~2 days - with 5 genome chunks running simultaneously (total 1.14GB)_)
 3. Create HMM model using .gff files from maker's outputs (_run time ~10 min_)
 4. Second round of MAKER
-     1. Prepare `maker_opts.ctl` file with updated parameters to **train SNAP** (maker_gff=_merged gff file from round1 output_, protein_pass=1, rm_pass=1, snaphmm=_hmm file created in step 3_, protein=#remove, model_org=#remove, repeat_protein=#remove, protein2genome=0, pred_stats=1)
+     1. Prepare `maker_opts.ctl` file with updated parameters to **train SNAP** (maker_gff=_merged gff file from round1_, protein_pass=1, rm_pass=1, snaphmm=_hmm file created in step 3_, protein=#remove, model_org=#remove, repeat_protein=#remove, protein2genome=0, pred_stats=1)
      2. Run same job script files used in first round of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... 
 
 [in progress]
 
 5. Create 2nd HMM model using .gff files from 2nd round of maker (_run time ~10 min_)
 6. Third round of MAKER
-     1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and include **Augustus** chicken model (maker_gff=_merged gff file from round2 output_, snaphmm=_hmm file created in step 5_, augustus_species=chicken)
+     1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and include **Augustus** chicken model (maker_gff=_merged gff file from round2_, snaphmm=_hmm file created in step 5_, augustus_species=chicken)
      2. Run same job script files used in first round of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... 
 7. Created 3rd HMM model using .gff files from 3rd round of maker
 8. Fourth round of MAKER
-     1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and optionally filter AED values (maker_gff=_merged gff file from round3 output_, snaphmm=_hmm file created in step 7_, AED_threshold=0.5)
+     1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and optionally filter AED values (maker_gff=_merged gff file from round3_, snaphmm=_hmm file created in step 7_, AED_threshold=0.5)
      2. Run same job script files used in first round of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... 
 
 
