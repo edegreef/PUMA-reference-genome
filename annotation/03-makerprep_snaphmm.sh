@@ -30,9 +30,6 @@ hmm-assembler.pl train_snap1 . > train_snap1.hmm
 
 echo "hmm for snap done"
 
-#copy hmm model to desired directory
-cp train_snap1.hmm /scratch/user/edegreef/ref_genome/annotation
-
 #cleaning up folder to prepare for next maker round
 cd /scratch/user/edegreef/ref_genome/annotation
 mkdir maker_round1
