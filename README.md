@@ -27,7 +27,7 @@ The main steps in this assembly improvement are polishing the genome with **Arro
 
 
 # Genome annotation [in progress]
-This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/maker.html)**, running multiple rounds and using programs such as repeatmasker, exonerate, snap, and augustus. All steps are listed below (approximate run time in parentheses) with matching numbers to the script file names in the **annotation** folder. [:file_folder:](https://github.com/edegreef/PUMA-reference-genome/tree/master/annotation). _Note:_ Normally people use RNA data for annotation, however, since I do not have this I am only using protein evidence. These following instructions are using protein evidence only (and for bird data).
+This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/maker.html)**, running multiple rounds and using programs such as repeatmasker, exonerate, snap, and augustus. All steps are listed below (approximate run time in parentheses) with matching numbers to the script file names in the **annotation** folder. [:file_folder:](https://github.com/edegreef/PUMA-reference-genome/tree/master/annotation) _Note:_ Normally people use RNA data for annotation, however, I am only using protein evidence. These following instructions are using protein evidence only (and for bird data).
 
 1. Prepare input files for running the first round of MAKER, including optionally splitting genome file into multiple chunks (to save time), downloading model data from [ensembl](http://ensembl.org/), and obtaining maker control files
 2. First round of MAKER
