@@ -27,20 +27,26 @@ The main steps in this assembly improvement are polishing the genome with **Arro
 
 
 # Genome annotation [in progress]
-This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/maker.html)**, running multiple rounds and using programs such as repeatmasker, exonerate, snap, and augustus. All steps are listed below (approximate run time in parentheses) with matching numbers to the script file names in the **annotation** folder. [:file_folder:](https://github.com/edegreef/PUMA-reference-genome/tree/master/annotation) _Note:_ Normally people use RNA data for annotation, however, I am only using protein evidence. These following instructions are using protein evidence only (and for bird data).
+This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/maker.html)**, running multiple rounds and using programs such as repeatmasker, exonerate, snap, and augustus. All steps are listed below (approximate run time in parentheses) with matching numbers to the script file names in the **annotation** folder. [:file_folder:](https://github.com/edegreef/PUMA-reference-genome/tree/master/annotation) _Note:_ Normally people use both RNA & protein data for annotation, however, I am only using protein evidence. These following instructions are using protein evidence only (and for bird data).
 
 1. Prepare input files for running the first round of MAKER, including optionally splitting genome file into multiple chunks (to save time), downloading model data from [ensembl](http://ensembl.org/), and obtaining maker control files
 2. First round of MAKER
      1. Prepare `maker_opts.ctl` file with adjusted parameters to run **RepeatMasker** and **Exonerate**, and a few other parameter changes (protein=_protein fasta files_, model_org=aves, protein2genome=1, cpus=20, min_contig=5000). I added the "02-" in the file name to organize opts file for this step since we will be editing and using this file again later. Should remove the "02-" in the name when running maker.
-     2. Run `maker_run.lsf`. This script is largely based off from [TAMU's GCATemplates](https://github.tamu.edu/), creating a temporary directory for the large number of files MAKER will create. I ran 5 of these scripts (maker_run0.lsf, maker_run1.lsf, maker_run2.lsf....), adjusted for each genome chunk that I created in Step 1 so I can still use the same maker_opts.ctl file for each job. (_run time ~2 days - with 5 genome chunks running simultaneously (total 1.14GB)_)
+     2. Run `maker_run.lsf`. This script is largely based off from [TAMU's GCATemplates](https://github.tamu.edu/), creating a temporary directory for the large number of files MAKER will create. **I ran 5 of these scripts (maker_run0.lsf, maker_run1.lsf, maker_run2.lsf....), adjusted for each genome chunk created in Step 1** so I can still use the same maker_opts.ctl file for each job. (_run time ~2 days - with 5 genome chunks running simultaneously (total 1.14GB)_)
 3. Create HMM model using .gff files from maker's outputs (_run time ~10 min_)
 4. Second round of MAKER
-     1. Prepare `maker_opts.ctl` file with updated parameters to **train SNAP** (maker_gff=_merged gff file from round1 output_, protein_pass=1, rm_pass=1, snaphmm=_hmm file created in step 3_, protein=#remove, model_org=#remove, repeat_protein=#remove, protein2genome=0, pred_stats=1).
-     2. Run same job script file used in first round of maker: `maker_run.lsf` (again, using 5 of these to run each chunk simultaneously)
+     1. Prepare `maker_opts.ctl` file with updated parameters to **train SNAP** (maker_gff=_merged gff file from round1 output_, protein_pass=1, rm_pass=1, snaphmm=_hmm file created in step 3_, protein=#remove, model_org=#remove, repeat_protein=#remove, protein2genome=0, pred_stats=1)
+     2. Run same job script files used in first round of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... 
 
 [in progress]
-5. Create 2nd HMM model using .gff files from 2nd round of maker, used to re-train SNAP
+
+5. Create 2nd HMM model using .gff files from 2nd round of maker (_run time ~10 min_)
 6. Third round of MAKER
-     1. Prepare maker_opts.ctl file with updated parameters to re-train **SNAP** and include **Augustus** chicken model
+     1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and include **Augustus** chicken model (maker_gff=_merged gff file from round2 output_, snaphmm=_hmm file created in step 5_, augustus_species=chicken)
+     2. Run same job script files used in first round of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... 
+7. Created 3rd HMM model using .gff files from 3rd round of maker
+8. Fourth round of MAKER
+     1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and optionally filter AED values (maker_gff=_merged gff file from round3 output_, snaphmm=_hmm file created in step 7_, AED_threshold=0.5)
+     2. Run same job script files used in first round of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... 
 
 
