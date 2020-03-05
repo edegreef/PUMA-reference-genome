@@ -30,7 +30,7 @@ hmm-assembler.pl train_snap1 . > train_snap1.hmm
 
 echo "hmm for snap done"
 
-#cleaning up folder to prepare for next maker round
+#cleaning up my annotation folder to prepare for next maker round
 cd /scratch/user/edegreef/ref_genome/annotation
 mkdir maker_round1
 mv PUMA2* maker_round1
