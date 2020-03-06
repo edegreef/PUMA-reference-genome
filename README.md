@@ -37,13 +37,13 @@ This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/mak
 4. Second round of MAKER
      1. Prepare `maker_opts.ctl` file with updated parameters to **train SNAP** (maker_gff=_merged gff file from round1_, protein_pass=1, rm_pass=1, snaphmm=_hmm file created in step 3_, protein=#remove, model_org=#remove, repeat_protein=#remove, protein2genome=0, pred_stats=1)
      2. Run same job script files used in first round of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... (_run time 4 hours - with 5 chunks running simultaneously_)
-
-[in progress]
-
 5. Create 2nd HMM model using .gff files from 2nd round of maker (_run time ~10 min_)
 6. Third round of MAKER
      1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and include **Augustus** chicken model (maker_gff=_merged gff file from round2_, snaphmm=_hmm file created in step 5_, augustus_species=chicken)
      2. Run same job script files used in previous rounds of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... 
+     
+[in progress]
+
 7. Created 3rd HMM model using .gff files from 3rd round of maker
 8. Fourth round of MAKER
      1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and optionally filter AED values (maker_gff=_merged gff file from round3_, snaphmm=_hmm file created in step 7_, AED_threshold=0.5)
