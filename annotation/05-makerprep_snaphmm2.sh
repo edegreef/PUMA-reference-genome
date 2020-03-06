@@ -13,7 +13,7 @@ cat *all.maker.transcripts.fasta > PUMA2_03022020_round2.transcripts.fasta
 
 #setting up snap directory
 mkdir snap/round2
-cp PUMA2_03022020_round2.gff snap/round1/PUMA2_03022020_round2.gff
+cp PUMA2_03022020_round2.gff snap/round2/PUMA2_03022020_round2.gff
 cd snap/round2
 
 #converting .gff file to SNAP format (zff)
