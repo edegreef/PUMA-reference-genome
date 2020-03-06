@@ -40,13 +40,14 @@ This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/mak
 5. Create 2nd HMM model using .gff files from 2nd round of maker (_run time ~10 min_)
 6. Third round of MAKER
      1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and include **Augustus** chicken model (maker_gff=_merged gff file from round2_, snaphmm=_hmm file created in step 5_, augustus_species=chicken)
-     2. Run same job script files used in previous rounds of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... 
-     
-[in progress]
-
-7. Created 3rd HMM model using .gff files from 3rd round of maker
+     2. Run same job script files used in previous rounds of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... (_run time 15 hours - with 5 chunks running simultaneously_)
+7. Create 3rd HMM model using .gff files from 3rd round of maker (_run time ~10 min_)
 8. Fourth round of MAKER
-     1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and optionally filter AED values (maker_gff=_merged gff file from round3_, snaphmm=_hmm file created in step 7_, AED_threshold=0.5)
+     1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and include **Augsutus** chicken model, and filter AED values (maker_gff=_merged gff file from round3_, snaphmm=_hmm file created in step 7_, AED_threshold=0.5)
      2. Run same job script files used in previous rounds of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... 
 
+
+Next: blasting with uniprot protein data, and running interproscan
+
+[in progress]
 
