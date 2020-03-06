@@ -20,7 +20,7 @@ The main steps in this assembly improvement are polishing the genome with **Arro
 8. Shorten scaffold header names and calculate scaffold lengths with `sed`, `cat`, & `awk` (_run time ~2 min_)
 9. Evaluate genome metrics with [QUAST](http://quast.sourceforge.net/docs/manual.html) (_run time 4 min_)
 10. Assess genome assembly completeness with [BUSCO](https://busco.ezlab.org/busco_userguide.html#running-busco) (_run time 3-4 days_)
-11. Scan full genome for any contaminants (_step ii. run time ~6-7 days, with full genome split over 5 jobs_)
+11. Scan full genome for any contaminants (_step ii. run time ~3.5 days, with full genome split over 5 jobs_)
      1. Download taxonomy database from NCBI, splitting reference genome file into chunks, and making lists ready for BLAST step
      2. Use [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) for each list of scaffolds, using script largely based from [kdelmore](https://github.com/kdelmore/)
      3. Check outputs for non-eukaryota using `grep`
