@@ -44,7 +44,7 @@ This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/mak
 7. Create 3rd HMM model using .gff files from 3rd round of maker (_run time ~10 min_)
 8. Fourth round of MAKER
      1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and include **Augsutus** chicken model, and filter AED values (maker_gff=_merged gff file from round3_, snaphmm=_hmm file created in step 7_, AED_threshold=0.5)
-     2. Run same job script files used in previous rounds of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... 
+     2. Run same job script files used in previous rounds of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... (_run time 15 hours - with 5 chunks running simultaneously_)
 
 
 Next: blasting with uniprot protein data, and running interproscan
