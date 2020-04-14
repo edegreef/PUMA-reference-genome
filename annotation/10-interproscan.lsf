@@ -1,0 +1,16 @@
+#BSUB -L /bin/bash              
+#BSUB -J interproscan
+#BSUB -n 4
+#BSUB -R "span[ptile=4]" 
+#BSUB -R "rusage[mem=2500]"
+#BSUB -M 2500
+#BSUB -W 24:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/ref_genome/annotation/interproscan
+module load InterProScan/5.40-77.0-foss-2018b-Python-3.6.6
+
+interproscan.sh --disable-precalc -f tsv -i PUMA2_03022020_round4.proteins.fasta -o PUMA2_03022020_round4.proteins.tsv --applications TIGRFAM,PIRSF,ProDom,SMART,PrositeProfiles,PrositePatterns,HAMAP,PfamA,PRINTS,SuperFamily,Coils,SignalP-GRAM_POSITIVE,SignalP-GRAM_NEGATIVE,SignalP-EUK,Phobius,TMHMM

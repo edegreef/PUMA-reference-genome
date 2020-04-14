@@ -1,0 +1,18 @@
+#BSUB -L /bin/bash              
+#BSUB -J blastp
+#BSUB -n 8
+#BSUB -R "span[ptile=8]" 
+#BSUB -R "rusage[mem=2500]"
+#BSUB -M 2500
+#BSUB -W 48:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/ref_genome/annotation/blastp
+module load BLAST+/2.10.0-intel-2018b
+
+makeblastdb -in /scratch/user/edegreef/ref_genome/annotation/uniprot/uniprot_COFL_REJU_ZEFI.fasta -dbtype prot
+
+blastp -query PUMA2_03022020_round4.proteins.fasta -db /scratch/user/edegreef/ref_genome/annotation/uniprot/uniprot_COFL_REJU_ZEFI.fasta -evalue 1e-6 -max_hsps 1 -max_target_seqs 1 -outfmt 6 -out PUMA_uniprot.blastp

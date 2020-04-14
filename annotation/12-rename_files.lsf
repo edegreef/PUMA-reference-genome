@@ -1,0 +1,31 @@
+#BSUB -L /bin/bash              
+#BSUB -J maker_rename
+#BSUB -n 8
+#BSUB -R "span[ptile=8]" 
+#BSUB -R "rusage[mem=2500]"
+#BSUB -M 2500
+#BSUB -W 24:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/ref_genome/annotation
+module load MAKER/2.31.10-intel-2017A-Python-2.7.12
+
+#making map file with more standardized gene IDs
+maker_map_ids --prefix GMOD_ --justify 8 maker_round4/PUMA2_03022020_round4.gff > GMOD.map
+
+#copying and renaming files before changing IDs
+cp maker_round4/PUMA2_03022020_round4.gff PUMA.maker.renamed.gff
+cp maker_round4/PUMA2_03022020_round4.proteins.fasta PUMA.maker.proteins.renamed.fasta
+cp maker_round4/PUMA2_03022020_round4.transcripts.fasta PUMA.maker.transcripts.renamed.fasta
+cp interproscan/PUMA2_03022020_round4.proteins.tsv interproscan.output.renamed.tsv
+cp blastp/PUMA_uniprot.blastp PUMA.uniprot.renamed.blastp
+
+#using map file to rename IDs in the *renamed files
+map_gff_ids GMOD.map PUMA.maker.renamed.gff
+map_fasta_ids GMOD.map PUMA.maker.proteins.renamed.fasta
+map_fasta_ids GMOD.map PUMA.maker.transcripts.renamed.fasta
+map_data_ids GMOD.map interproscan.output.renamed.tsv
+map_data_ids GMOD.map PUMA.uniprot.renamed.blastp
