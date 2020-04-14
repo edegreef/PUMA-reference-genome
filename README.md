@@ -46,7 +46,7 @@ This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/mak
      1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and include **Augsutus** chicken model, and filter AED values (maker_gff=_merged gff file from round3_, snaphmm=_hmm file created in step 7_, AED_threshold=0.5)
      2. Run same job script files used in previous rounds of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... (_run time 15 hours - with 5 chunks running simultaneously_)
 9. Merge outputs from 4th round of maker (_run time ~few min_)
-10. Run [InterProScan](https://github.com/ebi-pf-team/interproscan/wiki/HowToRun) with the proteins fasta file from maker outputs (_run time 7 hours_)
+10. Run [InterProScan](https://github.com/ebi-pf-team/interproscan/wiki/HowToRun) with the proteins fasta file from maker outputs. Two code scripts are listed here in this step, the .lsf file is for the [TAMU HPRC](https://hprc.tamu.edu/) where `-goterms` was not available, and the .slurm file was used on [Compute Canada](https://www.computecanada.ca/) which included `-goterms`. (_run time 7 hours_).
 11. Blast proteins fasta file with [uniprot](https://www.uniprot.org/) protein data (chicken, zebra finch, flycatcher) using [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) (_run time 7.5 hrs_)
 12. Prep files for integrating maker, interproscan, and blastp outputs (_run time 5 min_)
 13. Add functional info to blastp outputs (_run time 2 min_)
