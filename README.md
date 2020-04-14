@@ -26,10 +26,10 @@ The main steps in this assembly improvement are polishing the genome with **Arro
      3. Check outputs for non-eukaryota using `grep`
 
 
-# Genome annotation [in progress]
+# Genome annotation
 This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/maker.html)**, running multiple rounds and using programs such as repeatmasker, exonerate, snap, and augustus. All steps are listed below (approximate run time in parentheses) with matching numbers to the script file names in the **annotation** folder. [:file_folder:](https://github.com/edegreef/PUMA-reference-genome/tree/master/annotation) _Note:_ Normally people use both RNA & protein data for annotation, however, I am only using protein evidence. These following instructions are using protein evidence only (and for bird data).
 
-1. Prepare input files for running the first round of MAKER, including optionally splitting genome file into multiple chunks (to save time), downloading model data from [ensembl](http://ensembl.org/), and obtaining maker control files
+1. Prepare input files for running the first round of MAKER, including optionally splitting genome file into multiple chunks (to save time), downloading model data from [ensembl](http://ensembl.org/) (chicken, zebra finch, flycatcher), and obtaining maker control files
 2. First round of MAKER
      1. Prepare `maker_opts.ctl` file with adjusted parameters to run **RepeatMasker** and **Exonerate**, and a few other parameter changes (protein=_protein fasta files_, model_org=aves, protein2genome=1, cpus=20, min_contig=5000). I added the "02-" in the file name to organize opts file for this step since we will be editing and using this file again later. Should remove the "02-" in the name when running maker.
      2. Run `maker_run.lsf`. This script is largely based off from [TAMU's GCATemplates](https://github.tamu.edu/), creating a temporary directory for the large number of files MAKER will create. **I ran 5 of these scripts (maker_run0.lsf, maker_run1.lsf, maker_run2.lsf....), adjusted for each genome chunk created in Step 1** so I can still use the same maker_opts.ctl file for each job. (_run time 2 days - with 5 genome chunks running simultaneously (total 1.14GB)_)
@@ -45,9 +45,9 @@ This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/mak
 8. Fourth round of MAKER
      1. Prepare `maker_opts.ctl` file with updated parameters to **re-train SNAP** and include **Augsutus** chicken model, and filter AED values (maker_gff=_merged gff file from round3_, snaphmm=_hmm file created in step 7_, AED_threshold=0.5)
      2. Run same job script files used in previous rounds of maker: `maker_run0.lsf`, `maker_run1.lsf`, `maker_run2.lsf`... (_run time 15 hours - with 5 chunks running simultaneously_)
-
-
-Next: blasting with uniprot protein data, and running interproscan
-
-[in progress]
-
+9. Merge outputs from 4th round of maker (_run time ~few min_)
+10. Run [InterProScan](https://github.com/ebi-pf-team/interproscan/wiki/HowToRun) with the proteins fasta file from maker outputs (_run time 7 hours_)
+11. Blast proteins fasta file with [uniprot](https://www.uniprot.org/) protein data (chicken, zebra finch, flycatcher) using [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) (_run time 7.5 hrs_)
+12. Prep files for integrating maker, interproscan, and blastp outputs (_run time 5 min_)
+13. Add functional info to blastp outputs (_run time 2 min_)
+14. Update interproscan outputs (_run time 2 min_)
