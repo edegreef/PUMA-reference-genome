@@ -1,0 +1,18 @@
+#BSUB -L /bin/bash              
+#BSUB -J ipr_update
+#BSUB -n 8
+#BSUB -R "span[ptile=8]" 
+#BSUB -R "rusage[mem=2500]"
+#BSUB -M 2500
+#BSUB -W 48:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/ref_genome/annotation
+module load MAKER/2.31.10-intel-2017A-Python-2.7.12
+
+ipr_update_gff PUMA.maker.renamed.putative_function.gff output.cc.renamed.iprscan > PUMA.maker.renamed.putative_function.domain_added.cc.gff
+ 
+iprscan2gff3 output.cc.renamed.iprscan PUMA.maker.renamed.gff > visible_iprscan_domains.cc.gff
