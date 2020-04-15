@@ -50,4 +50,4 @@ This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/mak
 11. Blast proteins fasta file with [uniprot](https://www.uniprot.org/) protein data (chicken, zebra finch, flycatcher) using [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) (_run time 7.5 hrs_)
 12. Prep files for integrating maker, interproscan, and blastp outputs (_run time 5 min_)
 13. Add functional info to blastp outputs (_run time 2 min_)
-14. Update interproscan outputs (_run time 2 min_)
+14. Update interproscan outputs and additionally create gff file containing only genes (_run time 3 min_)
