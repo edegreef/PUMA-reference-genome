@@ -26,7 +26,7 @@ The main steps in this assembly improvement are polishing the genome with **Arro
      3. Check outputs for non-eukaryota using `grep`
 
 # Chromosomal synteny
-Synteny using chicken chromosomal information was done with the chicken genome accession# GCA_000002315.5 was used. This was done to order and orient the purple martin scaffolds in chromosomal positions and was completed through the Satsuma Synteny program (example script with different species here: https://github.com/edegreef/NBW-resequencing/blob/main/reference_genome/03-satsuma.sh).
+Synteny using chicken chromosomal information was done with the chicken genome accession# GCA_000002315.5. This was done to order and orient the purple martin scaffolds in chromosomal positions and was completed through the Satsuma Synteny program (example script with different species here: https://github.com/edegreef/NBW-resequencing/blob/main/reference_genome/03-satsuma.sh).
 The data file containing the output information ("purple_scafs_ordered_by_chicken.csv") is uploaded in this repository (https://github.com/edegreef/PUMA-reference-genome/blob/master/purple_scafs_ordered_by_chicken.csv)
 
 
