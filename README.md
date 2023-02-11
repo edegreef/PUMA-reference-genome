@@ -26,7 +26,9 @@ The main steps in this assembly improvement are polishing the genome with **Arro
      3. Check outputs for non-eukaryota using `grep`
 
 # Note on chromosomal synteny
-I am currently working on locating the scripts used to run synteny using chicken chromosomal information (chicken genome accession# GCA_000002315.5 was used), and I will update this page when available. This was done to order and orient the purple martin scaffolds in chromosomal positions and was completed through the Satsuma Synteny program (example script with different species here: https://github.com/edegreef/NBW-resequencing/blob/main/reference_genome/03-satsuma.sh)
+I am currently working on locating the scripts used to run synteny using chicken chromosomal information (chicken genome accession# GCA_000002315.5 was used), and I will update this page when available. This was done to order and orient the purple martin scaffolds in chromosomal positions and was completed through the Satsuma Synteny program (example script with different species here: https://github.com/edegreef/NBW-resequencing/blob/main/reference_genome/03-satsuma.sh).
+The data file containing the output information ("purple_scafs_ordered_by_chicken.csv") is uploaded in this repository (https://github.com/edegreef/PUMA-reference-genome/blob/master/purple_scafs_ordered_by_chicken.csv)
+
 
 # Genome annotation
 This annotation pipeline uses **[MAKER](https://www.yandell-lab.org/software/maker.html)**, running multiple rounds and using programs such as repeatmasker, exonerate, snap, and augustus. All steps are listed below (approximate run time in parentheses) with matching numbers to the script file names in the **annotation** folder. [:file_folder:](https://github.com/edegreef/PUMA-reference-genome/tree/master/annotation) _Note:_ Normally people use both RNA & protein data for annotation, however, I am only using protein evidence. These following instructions are using protein evidence only (and for bird data).
